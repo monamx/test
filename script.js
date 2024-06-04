@@ -44,8 +44,8 @@ const puppeteer = require('puppeteer');
     const titles = await page.title();
     console.log(`Meta titles halaman: ${titles}`);
 
-    const adsenseElement = await page.$('ins.adsbygoogle');
-    if (adsenseElement) {
+    const adsenseElements = await page.$('ins.adsbygoogle');
+    if (adsenseElements) {
       console.log('Iklan AdSense dimuat di halaman.');
     } else {
       console.log('Tidak ada iklan AdSense yang dimuat di halaman.');
