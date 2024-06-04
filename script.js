@@ -34,6 +34,11 @@ const puppeteer = require('puppeteer');
     await page.goto(selectedUrl, {  waitUntil: 'networkidle2'});
     console.log(`Halaman dimuat: ${selectedUrl}`);
 
+    await page.evaluate(() => {
+      window.scrollBy(0, window.innerHeight);
+    });
+    console.log('Scroll halaman dilakukan');
+
     // Tunggu selama 2 menit (120000 milidetik)
     // await page.waitForTimeout(120000);
     await page.evaluate(() => {
