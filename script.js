@@ -27,7 +27,7 @@ const puppeteer = require('puppeteer');
     console.log(`Membuka URL: ${selectedUrl}`);
 
     // Luncurkan browser dalam mode headless
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     // Buka URL yang dipilih
