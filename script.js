@@ -47,9 +47,10 @@ const puppeteer = require('puppeteer');
     const adsenseElements = await page.$('ins.adsbygoogle');
     if (adsenseElements) {
       console.log('Iklan AdSense dimuat di halaman.');
+      // Ambil URL iklan AdSense
       const adUrl = await page.evaluate(() => {
-        const adElement = document.querySelector('ins.adsbygoogle');
-        return adElement.getAttribute('data-ad-slot'); // Ganti dengan atribut yang sesuai
+        const iframeElement = document.querySelector('ins.adsbygoogle iframe');
+        return iframeElement ? iframeElement.getAttribute('src') : null;
       });
 
       console.log('URL iklan AdSense:', adUrl);
@@ -66,9 +67,10 @@ const puppeteer = require('puppeteer');
     const adsenseElement = await page.$('ins.adsbygoogle');
     if (adsenseElement) {
       console.log('Iklan AdSense dimuat di halaman.');
+      // Ambil URL iklan AdSense
       const adUrl = await page.evaluate(() => {
-        const adElement = document.querySelector('ins.adsbygoogle');
-        return adElement.getAttribute('data-ad-slot'); // Ganti dengan atribut yang sesuai
+        const iframeElement = document.querySelector('ins.adsbygoogle iframe');
+        return iframeElement ? iframeElement.getAttribute('src') : null;
       });
 
       console.log('URL iklan AdSense:', adUrl);
