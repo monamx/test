@@ -29,10 +29,13 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage();
 
     // Buka URL yang dipilih
-    await page.goto(selectedUrl, {  waitUntil: 'networkidle2', timeout: 120000});
+    await page.goto(selectedUrl, {  waitUntil: 'networkidle2'});
 
     // Tunggu selama 2 menit (120000 milidetik)
     // await page.waitForTimeout(120000);
+    await page.evaluate(() => {
+      return new Promise(resolve => setTimeout(resolve, 120000));
+    });
 
     // Simulasi scroll
     await page.evaluate(() => {
