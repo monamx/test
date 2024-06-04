@@ -44,11 +44,25 @@ const puppeteer = require('puppeteer');
     const titles = await page.title();
     console.log(`Meta titles halaman: ${titles}`);
 
+    const adsenseElement = await page.$('ins.adsbygoogle');
+    if (adsenseElement) {
+      console.log('Iklan AdSense dimuat di halaman.');
+    } else {
+      console.log('Tidak ada iklan AdSense yang dimuat di halaman.');
+    }
+
     // Tunggu selama 2 menit (120000 milidetik)
     // await page.waitForTimeout(120000);
     await page.evaluate(() => {
       return new Promise(resolve => setTimeout(resolve, 120000));
     });
+
+    const adsenseElement = await page.$('ins.adsbygoogle');
+    if (adsenseElement) {
+      console.log('Iklan AdSense dimuat di halaman.');
+    } else {
+      console.log('Tidak ada iklan AdSense yang dimuat di halaman.');
+    }
 
     const titless = await page.title();
     console.log(`Meta titless halaman: ${titless}`);
