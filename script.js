@@ -47,13 +47,16 @@ const puppeteer = require('puppeteer');
     const adsenseElements = await page.$('ins.adsbygoogle');
     if (adsenseElements) {
       console.log('Iklan AdSense dimuat di halaman.');
-      // Ambil URL iklan AdSense
-      const adUrl = await page.evaluate(() => {
-        const iframeElement = document.querySelector('ins.adsbygoogle iframe');
-        return iframeElement ? iframeElement.getAttribute('src') : null;
-      });
+      // Ambil semua iframe dalam elemen iklan AdSense
+      const iframes = await page.$$eval('ins.adsbygoogle iframe', iframes => iframes.map(iframe => iframe.src));
 
-      console.log('URL iklan AdSense:', adUrl);
+      // Cari iframe yang memiliki domain yang diinginkan
+      const adUrls = iframes.filter(url => url.startsWith('https://www.googleadservices.com/pagead/aclk?'));
+
+      // Cetak URL iklan yang sesuai
+      adUrls.forEach((adUrl, index) => {
+        console.log(`URL iklan AdSense ${index + 1}: ${adUrl}`);
+      });
     } else {
       console.log('Tidak ada iklan AdSense yang dimuat di halaman.');
     }
