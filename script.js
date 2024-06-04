@@ -47,6 +47,12 @@ const puppeteer = require('puppeteer');
     const adsenseElements = await page.$('ins.adsbygoogle');
     if (adsenseElements) {
       console.log('Iklan AdSense dimuat di halaman.');
+      const adUrl = await page.evaluate(() => {
+        const adElement = document.querySelector('ins.adsbygoogle');
+        return adElement.getAttribute('data-ad-slot'); // Ganti dengan atribut yang sesuai
+      });
+
+      console.log('URL iklan AdSense:', adUrl);
     } else {
       console.log('Tidak ada iklan AdSense yang dimuat di halaman.');
     }
@@ -60,6 +66,12 @@ const puppeteer = require('puppeteer');
     const adsenseElement = await page.$('ins.adsbygoogle');
     if (adsenseElement) {
       console.log('Iklan AdSense dimuat di halaman.');
+      const adUrl = await page.evaluate(() => {
+        const adElement = document.querySelector('ins.adsbygoogle');
+        return adElement.getAttribute('data-ad-slot'); // Ganti dengan atribut yang sesuai
+      });
+
+      console.log('URL iklan AdSense:', adUrl);
     } else {
       console.log('Tidak ada iklan AdSense yang dimuat di halaman.');
     }
