@@ -41,11 +41,17 @@ const puppeteer = require('puppeteer');
     await page.screenshot({ path: 'screenshot.png', fullPage: true });
     console.log('Screenshot diambil setelah scroll');
 
+    const titles = await page.title();
+    console.log(`Meta title halaman: ${titles}`);
+
     // Tunggu selama 2 menit (120000 milidetik)
     // await page.waitForTimeout(120000);
     await page.evaluate(() => {
       return new Promise(resolve => setTimeout(resolve, 120000));
     });
+
+    const titless = await page.title();
+    console.log(`Meta title halaman: ${titless}`);
 
     // Simulasi scroll
     await page.evaluate(() => {
