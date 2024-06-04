@@ -34,6 +34,9 @@ const puppeteer = require('puppeteer');
     await page.goto(selectedUrl, {  waitUntil: 'networkidle2'});
     console.log(`Halaman dimuat: ${selectedUrl}`);
 
+    const title = await page.title();
+    console.log(`Meta title halaman: ${title}`);
+
     await page.evaluate(() => {
       window.scrollBy(0, window.innerHeight);
     });
