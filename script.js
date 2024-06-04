@@ -21,7 +21,6 @@ const puppeteer = require('puppeteer');
     // Pilih URL secara acak
     const randomIndex = Math.floor(Math.random() * urls.length);
     const selectedUrl = urls[randomIndex];
-    console.log(`Membuka URL: ${selectedUrl}`);
 
     // Luncurkan browser dalam mode headless
     const browser = await puppeteer.launch({ headless: true });
@@ -38,6 +37,9 @@ const puppeteer = require('puppeteer');
       window.scrollBy(0, window.innerHeight);
     });
     console.log('Scroll halaman dilakukan');
+
+    await page.screenshot({ path: 'screenshot.png', fullPage: true });
+    console.log('Screenshot diambil setelah scroll');
 
     // Tunggu selama 2 menit (120000 milidetik)
     // await page.waitForTimeout(120000);
