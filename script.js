@@ -13,12 +13,9 @@ const puppeteer = require('puppeteer');
 (async () => {
   try {
     const urls = [
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/?source=gmail&ust=1717516869982000&usg=AOvVaw2zMKfnPXKIVQ2fLZ-kMwvu",
+      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717623826462000&usg=AOvVaw1MFtp9jSiVgY7WfWNNZkFF",
       "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717622711751000&usg=AOvVaw0r20bo07Hmu-xjQ1BvnvPa",
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/?source=gmail&ust=1717516942098000&usg=AOvVaw1jgXacVUXL9acWDF2WgnFn",
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/?source=gmail&ust=1717516971756000&usg=AOvVaw2O8f5SLVZ34kNowcbBuzH7",
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/?source=gmail&ust=1717516993947000&usg=AOvVaw1DER8_2JuMdStoLC5I4TKD",
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/?source=gmail&ust=1717517014007000&usg=AOvVaw0OkOqJdHs3E6bpaTE6AXfE"
+      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717623857593000&usg=AOvVaw0MpUBTbqI-Eg8N9zW8_mrm"
     ];
 
     // Pilih URL secara acak
