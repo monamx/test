@@ -123,7 +123,8 @@ const puppeteer = require('puppeteer');
 
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    await page.type('input[name="id"]', tiktokUrl);
+    await page.waitForSelector('input#input-query', { visible: true });
+    await page.type('input#input-query', tiktokUrl);
 
     await Promise.all([
       page.click('button[id="btn-download"]'),
