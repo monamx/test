@@ -13,9 +13,10 @@ const puppeteer = require('puppeteer');
 (async () => {
   try {
     const urls = [
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717623826462000&usg=AOvVaw1MFtp9jSiVgY7WfWNNZkFF",
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717622711751000&usg=AOvVaw0r20bo07Hmu-xjQ1BvnvPa",
-      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717623857593000&usg=AOvVaw0MpUBTbqI-Eg8N9zW8_mrm"
+      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717657654525000&usg=AOvVaw2bdDuZCDwwutjRXrMUANcq",
+      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717657684549000&usg=AOvVaw0f-ZH2u1RPn-NqDIGOFQ4D",
+      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717657710009000&usg=AOvVaw1HNAp-gQoHAXJ23b6YegrU",
+      "https://www.google.com/url?hl=en&q=https://www.ohang.eu.org/&source=gmail&ust=1717657738915000&usg=AOvVaw2mYCNBiuuYnpzKddUFBJe6"
     ];
 
     // Pilih URL secara acak
