@@ -111,43 +111,67 @@
 
 
 
+// const puppeteer = require('puppeteer');
+
+// (async () => {
+//   try {
+//     const url = "https://ttsave.app/";
+//     const tiktokUrl = "https://www.tiktok.com/@jeromepolin98/video/7349411581362474241";
+
+//     const browser = await puppeteer.launch({ headless: true });
+//     const page = await browser.newPage();
+
+//     await page.goto(url, { waitUntil: 'networkidle2' });
+
+//     await page.waitForXPath('//input[@id="input-query"]', { visible: true });
+//     const input = await page.$x('//input[@id="input-query"]');
+//     await input[0].type(tiktokUrl);
+
+//     await Promise.all([
+//       page.click('button[id="btn-download"]'),
+//       page.waitForNavigation({ waitUntil: 'networkidle2' })
+//     ]);
+
+//     await page.waitForSelector('a[href^="https://v16.tiktokcdn.com/"]', { visible: true });
+
+//     // Mengambil URL dari href elemen link download
+//     const downloadUrl = await page.evaluate(() => {
+//       const link = document.querySelector('a[href^="https://v16.tiktokcdn.com/"]');
+//       return link ? link.href : null;
+//     });
+
+//     if (downloadUrl) {
+//       console.log('URL Download:', downloadUrl);
+//     } else {
+//       console.log('Gagal menemukan URL download.');
+//     }
+    
+//     await browser.close();
+//   } catch (error) {
+//     console.error('Terjadi kesalahan:', error);
+//   }
+// })();
+
+
+
+
+
+
 const puppeteer = require('puppeteer');
 
 (async () => {
   try {
-    const url = "https://ttsave.app/";
-    const tiktokUrl = "https://www.tiktok.com/@jeromepolin98/video/7349411581362474241";
+    const url = "https://www.tiktok.com/explore";
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     await page.goto(url, { waitUntil: 'networkidle2' });
-
-    await page.waitForXPath('//input[@id="input-query"]', { visible: true });
-    const input = await page.$x('//input[@id="input-query"]');
-    await input[0].type(tiktokUrl);
-
-    await Promise.all([
-      page.click('button[id="btn-download"]'),
-      page.waitForNavigation({ waitUntil: 'networkidle2' })
-    ]);
-
-    await page.waitForSelector('a[href^="https://v16.tiktokcdn.com/"]', { visible: true });
-
-    // Mengambil URL dari href elemen link download
-    const downloadUrl = await page.evaluate(() => {
-      const link = document.querySelector('a[href^="https://v16.tiktokcdn.com/"]');
-      return link ? link.href : null;
-    });
-
-    if (downloadUrl) {
-      console.log('URL Download:', downloadUrl);
-    } else {
-      console.log('Gagal menemukan URL download.');
-    }
-    
-    await browser.close();
-  } catch (error) {
+    const title = await page.title();
+    console.log(`Meta title halaman: ${title}`);
+} catch (error) {
     console.error('Terjadi kesalahan:', error);
   }
 })();
+
+
