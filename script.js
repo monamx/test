@@ -189,7 +189,7 @@ const PIN_DESCRIPTION = 'Deskripsi Pin Anda';
 const PIN_URL = 'https://example.com';
 
 async function uploadPin() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: false }); // Ganti ke false untuk melihat browser
   const page = await browser.newPage();
   
   // Buka Pinterest dan login
@@ -197,15 +197,29 @@ async function uploadPin() {
   await page.waitForSelector('input[name="id"]');
   await page.type('input[name="id"]', PINTEREST_EMAIL);
   await page.type('input[name="password"]', PINTEREST_PASSWORD);
+
+  // Tambahkan sedikit penundaan sebelum submit
+  await page.waitForTimeout(2000);
+
   await page.click('button[type="submit"]');
   await page.waitForNavigation();
 
+  // Periksa apakah login berhasil dengan memeriksa elemen tertentu di halaman setelah login
   const loginSuccess = await page.evaluate(() => {
     return document.querySelector('div[data-test-id="searchBar"]') !== null;
   });
 
   if (!loginSuccess) {
     console.log('Login gagal. Periksa kembali email dan password Anda.');
+
+    // Tampilkan pesan kesalahan dari halaman
+    const errorMessage = await page.evaluate(() => {
+      const errorElement = document.querySelector('div[data-test-id="error-message"]');
+      return errorElement ? errorElement.innerText : 'Tidak ada pesan kesalahan yang ditemukan';
+    });
+
+    console.log('Pesan kesalahan dari halaman:', errorMessage);
+
     await browser.close();
     return;
   }
