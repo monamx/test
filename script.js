@@ -189,7 +189,7 @@ const PIN_DESCRIPTION = 'Deskripsi Pin Anda';
 const PIN_URL = 'https://example.com';
 
 async function uploadPin() {
-  const browser = await launch();
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   
   // Buka Pinterest dan login
