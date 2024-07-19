@@ -164,6 +164,7 @@ const PINTEREST_PASSWORD = 'Muntakul1967#';
 
 (async () => {
     const url = "https://www.pinterest.com/login/";
+    const businessHubUrl = "https://id.pinterest.com/business/hub/";
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
@@ -176,6 +177,19 @@ const PINTEREST_PASSWORD = 'Muntakul1967#';
     await page.waitForSelector('input[name="id"]');
     await page.type('input[name="id"]', PINTEREST_EMAIL);
     await page.type('input[name="password"]', PINTEREST_PASSWORD);
+    await page.click('button[type="submit"]');
+    await page.waitForNavigation({ waitUntil: 'networkidle2' });
+
+    // Akses halaman Business Hub
+    await page.goto(businessHubUrl, { waitUntil: 'networkidle2' });
+
+    // Periksa apakah diarahkan kembali ke halaman login
+    const currentUrl = page.url();
+    if (currentUrl.includes('login')) {
+        console.log('Login gagal. Anda diarahkan kembali ke halaman login.');
+    } else {
+        console.log('Login berhasil. Anda berhasil mengakses halaman Business Hub.');
+    }
 
     // Ambil nilai dari input email dan password untuk memeriksa apakah input berhasil
     const emailValue = await page.$eval('input[name="id"]', el => el.value);
