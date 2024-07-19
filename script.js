@@ -179,7 +179,7 @@
 
 
 
-import { launch } from '@cloudflare/puppeteer';
+const puppeteer = require('puppeteer');
 
 const PINTEREST_EMAIL = 'qONU5fQ@instasave.biz.id';
 const PINTEREST_PASSWORD = 'Muntakul1967#';
