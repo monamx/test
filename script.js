@@ -197,7 +197,7 @@ const PINTEREST_PASSWORD = 'Muntakul1967#';
         console.log('Pesan kesalahan dari halaman:', errorMessage);
     }
 
-    await browser.close();
+    // await browser.close();
 })();
 
 
