@@ -159,8 +159,10 @@
 
 const puppeteer = require('puppeteer');
 
+const PINTEREST_EMAIL = 'qONU5fQ@instasave.biz.id';
+const PINTEREST_PASSWORD = 'Muntakul1967#';
+
 (async () => {
-  try {
     const url = "https://www.pinterest.com/login/";
 
     const browser = await puppeteer.launch({ headless: true });
@@ -169,10 +171,25 @@ const puppeteer = require('puppeteer');
     await page.goto(url, { waitUntil: 'networkidle2' });
     const title = await page.title();
     console.log(`Meta title halaman: ${title}`);
-} catch (error) {
-    console.error('Terjadi kesalahan:', error);
-  }
+
+    // Input email dan password
+    await page.waitForSelector('input[name="id"]');
+    await page.type('input[name="id"]', PINTEREST_EMAIL);
+    await page.type('input[name="password"]', PINTEREST_PASSWORD);
+
+    // Ambil nilai dari input email dan password untuk memeriksa apakah input berhasil
+    const emailValue = await page.$eval('input[name="id"]', el => el.value);
+    const passwordValue = await page.$eval('input[name="password"]', el => el.value);
+
+    if (emailValue === PINTEREST_EMAIL && passwordValue === PINTEREST_PASSWORD) {
+        console.log('Input email dan password berhasil.');
+    } else {
+        console.log('Input email atau password gagal.');
+    }
+
+    await browser.close();
 })();
+
 
 
 
